@@ -98,7 +98,7 @@ def main():
     st.title("DIPA Mail Merge Generator (Version 1)")
 
     # Target path for refsatker.xlsx
-    ref_path = r"C:\Users\michael.sidabutar\Documents\revisi\refsatker.xlsx"
+    ref_path = "refsatker.xlsx"
     reference_df = None
     
     if os.path.exists(ref_path):
@@ -143,3 +143,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
