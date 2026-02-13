@@ -75,7 +75,11 @@ def extract_specific_data(pdf_file, reference_df, current_no):
                 # Column 13 (ref) -> =VLOOKUP(B2;refsatker2!A:B;2;0)
                 ref_val = ref_match.iloc[0].iloc[1]
 
-        # 5. Build Final Row Structure
+        # 5. ND PENGANTAR LOGIC (Updated)
+        # Formula: =IF(E2="tidak berubah yaitu DS:";"tidak";"")
+        ds_nd_pengantar = "tidak" if ds_status == "tidak berubah yaitu DS:" else ""
+
+        # 6. Build Final Row Structure
         return {
             "No": current_no,
             "Kode Satker": kode_satker,
@@ -90,7 +94,7 @@ def extract_specific_data(pdf_file, reference_df, current_no):
             "Pejabat": pejabat,
             "Tembusan KL": tembusan_kl,
             "ref": ref_val,
-            "DS ND pengantar": ""
+            "DS ND pengantar": ds_nd_pengantar
         }
 
 def main():
@@ -98,7 +102,7 @@ def main():
     st.title("DIPA Mail Merge Generator (Version 1)")
 
     # Target path for refsatker.xlsx
-    ref_path = "refsatker.xlsx"
+    ref_path = r"C:\Users\michael.sidabutar\Documents\revisi\refsatker.xlsx"
     reference_df = None
     
     if os.path.exists(ref_path):
@@ -143,4 +147,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
